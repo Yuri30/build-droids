@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include, re_path
+from rest_framework.documentation import include_docs_urls
 from rest_framework_jwt.views import obtain_jwt_token
 from django.conf import settings
 from django.conf.urls.static import static
@@ -23,4 +24,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.demanda.urls')),
     path('api/login/', obtain_jwt_token),
+    path('docs', include_docs_urls(title='Documentação da API')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

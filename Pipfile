@@ -13,6 +13,7 @@ pytz = "==2020.5"
 sqlparse = "==0.4.1"
 python-environ = "==0.4.54"
 djangorestframework-jwt = "*"
+coreapi = "*"
 
 [dev-packages]
 

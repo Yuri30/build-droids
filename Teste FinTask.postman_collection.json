@@ -1,0 +1,543 @@
+{
+	"info": {
+		"_postman_id": "ddcb0ec8-b78e-499d-b5a2-c05909e81431",
+		"name": "Teste FinTask",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Demanda",
+			"item": [
+				{
+					"name": "Listar Demandas",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/demanda/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"demanda",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Demanda",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 1,\n\t\"descricao\": \"Testando a demanda1\",\n\t\"endereco_de_entrega\": 1,\n\t\"info_contato\": {\n\t\t\"nome\": \"Yuri Johnathan Nunes\",\n\t\t\"email\": \"yu.johnathan@gmail.com\",\n\t\t\"telefone\": \"234141341\"\n\t},\n\t\"anunciante\": 4,\n\t\"status\": \"AB\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/demanda/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"demanda",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar Demanda",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"descricao\": \"Testando a demanda 3\",\n    \"endereco_de_entrega\": 5,\n    \"anunciante\": 4,\n    \"status\": \"AB\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/demanda/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"demanda",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delatar Demanda",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/demanda/3/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"demanda",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Endereço",
+			"item": [
+				{
+					"name": "Listar Demandas",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/endereco/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"endereco",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Endereço",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 5,\n  \"rua\": \"Nasciment0\",\n  \"numero\": \"12\",\n  \"bairro\": \"centro\",\n  \"cidade\": \"picos\",\n  \"estado\": \"pi\",\n  \"cep\": \"64410000\",\n  \"complemento\": \"\",\n  \"anunciante\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/endereco/5/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"endereco",
+								"5",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar Demanda",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"rua\": \"Nasciment1\",\n\t\"numero\": \"12\",\n\t\"bairro\": \"centro\",\n\t\"cidade\": \"picos\",\n\t\"estado\": \"pi\",\n\t\"cep\": \"64410000\",\n\t\"complemento\": \"\",\n\t\"anunciante\": 4\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/endereco/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"endereco",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Endereço",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/endereco/8/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"endereco",
+								"8",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Anunciante",
+			"item": [
+				{
+					"name": "Listar anunciante logado",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/anunciante/4/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"anunciante",
+								"4",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Anunciante",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/anunciante/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"anunciante",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar anunciante",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 9,\n  \"username\": \"Yuri11\",\n  \"password\": \"pbkdf2_sha256$216000$q3WOahNSNLBW$vWi8a73l2gMm7W8SUvHFhcdrQFNAJanKSbwF0IaFjWQ=\",\n  \"email\": \"yu.johnathan@gmail.com\",\n  \"is_active\": true,\n  \"nome\": \"Yuri Johnathan1\",\n  \"cpf\": \"05627132396\",\n  \"telefone\": \"99984265170\",\n  \"endereco_set\": [\n    {\n      \"id\": 3,\n      \"rua\": \"Nascimento\",\n      \"numero\": \"12\",\n      \"bairro\": \"centro\",\n      \"cidade\": \"angical\",\n      \"estado\": \"pi\",\n      \"cep\": \"64410000\",\n      \"complemento\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"rua\": \"Quadra01\",\n      \"numero\": \"13\",\n      \"bairro\": \"pantanal\",\n      \"cidade\": \"picos\",\n      \"estado\": \"pi\",\n      \"cep\": \"64410000\",\n      \"complemento\": \"ao lado da dona rosinha\"\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/anunciante/9/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"anunciante",
+								"9",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar parcial Anunciante",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"endereco_set\": [\n\t\t{\n\t\t\t\"id\": 3,\n\t\t\t\"complemento\": \"Porximo a padaria pão quente\"\n\t\t}\n\t]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/anunciante/9/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"anunciante",
+								"9",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar Anunciante",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"Yuri123\",\n\t\"password\": \"123testando\",\n\t\"email\": \"yu.johnathan@gmail.com\",\n\t\"is_active\": true,\n\t\"nome\": \"Yuri Johnathan\",\n\t\"cpf\": \"05627132396\",\n\t\"telefone\": \"234141341\",\n\t\"endereco_set\": [\n\t\t{\n\t\t\t\"rua\": \"Nascimento\",\n\t\t\t\"numero\": \"12\",\n\t\t\t\"bairro\": \"centro\",\n\t\t\t\"cidade\": \"picos\",\n\t\t\t\"estado\": \"pi\",\n\t\t\t\"cep\": \"64410000\",\n\t\t\t\"complemento\": \"\"\n\t\t},\n\t\t{\n\t\t\t\"rua\": \"Quadra01\",\n\t\t\t\"numero\": \"13\",\n\t\t\t\"bairro\": \"pantanal\",\n\t\t\t\"cidade\": \"picos\",\n\t\t\t\"estado\": \"pi\",\n\t\t\t\"cep\": \"64410000\",\n\t\t\t\"complemento\": \"\"\n\t\t}\n\t]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/anunciante/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"anunciante",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delatar Demanda",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/anunciante/3/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"anunciante",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"Yuri3\",\n    \"password\": \"123testando\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/login/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Administrador",
+			"item": [
+				{
+					"name": "Criar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin123.\",\n    \"is_superuser\": true,\n    \"first_name\": \"super\",\n    \"last_name\": \"admin\",\n    \"email\": \"admin@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/administrador/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"administrador",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
