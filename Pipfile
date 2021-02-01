@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+asgiref = "==3.3.1"
+Django = "==3.1.5"
+djangorestframework = "==3.12.2"
+drf-writable-nested = "==0.6.2"
+psycopg2-binary = "==2.8.6"
+pytz = "==2020.5"
+sqlparse = "==0.4.1"
+python-environ = "==0.4.54"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"
