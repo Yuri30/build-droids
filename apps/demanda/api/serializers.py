@@ -1,10 +1,35 @@
 from rest_framework import serializers
 from drf_writable_nested.serializers import WritableNestedModelSerializer
-from ..models import Anunciante, Endereco
+from ..models import Anunciante, Endereco, Demanda, EnderecoDeEntrega
+from django.contrib.auth.models import User
 from django.core import exceptions
 from django.core.exceptions import ObjectDoesNotExist
 import django.contrib.auth.password_validation as validators
 
+
+class AdministradorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'username','password', 'is_superuser', 'first_name', 'last_name', 'email')
+
+    def create(self, validated_data):
+        user = User(**validated_data)
+        password = validated_data.get('password')
+        user.set_password(password) 
+        
+        user.save()
+        return user
+
+    def validate_password(self,data):
+        
+        try:
+            validators.validate_password(password=data,user=data)
+
+        except exceptions.ValidationError as e:
+            erros = list(e.messages)
+            raise serializers.ValidationError(erros)
+                
+        return data
 
 class EnderecoSerializer(serializers.ModelSerializer):
 
@@ -40,3 +65,25 @@ class AnuncianteSerializer(WritableNestedModelSerializer):
             raise serializers.ValidationError(erros)
                 
         return data
+
+
+class EnderecoDeEntregaSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = EnderecoDeEntrega
+        fields = ('id', 'rua', 'numero', 'bairro', 'cidade', 'estado', 'cep', 'complemento')
+
+
+class DemandaSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Demanda
+        fields = ('id', 'descricao', 'endereco_de_entrega', 'info_contato', 'anunciante','status')
+
+
+class DemandaListaSerializer(serializers.ModelSerializer):
+    endereco_de_entrega = EnderecoDeEntregaSerializer()
+
+    class Meta:
+        model = Demanda
+        fields = ('id', 'descricao', 'endereco_de_entrega', 'info_contato', 'anunciante','status')
