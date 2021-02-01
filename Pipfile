@@ -12,6 +12,7 @@ psycopg2-binary = "==2.8.6"
 pytz = "==2020.5"
 sqlparse = "==0.4.1"
 python-environ = "==0.4.54"
+djangorestframework-jwt = "*"
 
 [dev-packages]
 

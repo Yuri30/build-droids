@@ -16,21 +16,21 @@ class AnuncianteViewSet(viewsets.ModelViewSet):
     serializer_class = AnuncianteSerializer
     queryset = Anunciante.objects.all()
 
-    #@authentication_classes([BasicAuthentication, SessionAuthentication])
-    #@permission_classes([IsAuthenticated, IsAdminUser])
+    @authentication_classes([BasicAuthentication, SessionAuthentication])
+    @permission_classes([IsAuthenticated, IsAdminUser])
     def list(self, request):
         queryset = Anunciante.objects.all()
         serializer = AnuncianteSerializer(queryset, many=True)
         return Response(serializer.data)
     
-    #@authentication_classes([BasicAuthentication, SessionAuthentication])
-    #@permission_classes([IsAuthenticated])
+    @authentication_classes([BasicAuthentication, SessionAuthentication])
+    @permission_classes([IsAuthenticated])
     def retrieve(self, request, pk=None):
         queryset = Anunciante.objects.all()
         anunciante = get_object_or_404(queryset, pk=pk)
         me = self.request.user.anunciante
         if anunciante != me:
-            return  Response(serializer.errors, status=status.HTTP_401_UNAUTHORIZED)
+            return Response("Anunciante não é o mesmo que esta logado", status=status.HTTP_401_UNAUTHORIZED)
 
         serializer = AnuncianteSerializer(anunciante)
         return Response(serializer.data)
@@ -46,8 +46,8 @@ class AnuncianteViewSet(viewsets.ModelViewSet):
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    #@authentication_classes([BasicAuthentication, SessionAuthentication])
-    #@permission_classes([IsAuthenticated, IsAdminUser])
+    @authentication_classes([BasicAuthentication, SessionAuthentication])
+    @permission_classes([IsAuthenticated, IsAdminUser])
     def update(self, request, pk=None):
         try:
             anunciante = Anunciante.objects.get(pk=pk)
@@ -76,8 +76,8 @@ class AnuncianteViewSet(viewsets.ModelViewSet):
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    #@authentication_classes([BasicAuthentication, SessionAuthentication])
-    #@permission_classes([IsAuthenticated, IsAdminUser])
+    @authentication_classes([BasicAuthentication, SessionAuthentication])
+    @permission_classes([IsAuthenticated, IsAdminUser])
     def destroy(self, request, pk=None):
         try:
             anunciante = Anunciante.objects.get(pk=pk)
@@ -91,3 +91,20 @@ class AnuncianteViewSet(viewsets.ModelViewSet):
 class EnderecoViewSet(viewsets.ModelViewSet):
     serializer_class = EnderecoSerializer
     queryset = Endereco.objects.all()
+    permission_classes = (IsAuthenticated,)
+
+    def list(self, request):
+        me = self.request.user.anunciante
+        queryset = Endereco.objects.filter(anunciante=me)
+        serializer = EnderecoSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+    def retrieve(self, request, pk=None):
+        queryset = Anunciante.objects.all()
+        anunciante = get_object_or_404(queryset, pk=pk)
+        me = self.request.user.anunciante
+        if anunciante != me:
+            return Response("Endereço não é do Anunciante que esta logado", status=status.HTTP_401_UNAUTHORIZED)
+
+        serializer = AnuncianteSerializer(anunciante)
+        return Response(serializer.data)
