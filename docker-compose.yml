@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  # Postgres
+  db:
+    image: postgres
+    environment:
+      - "POSTGRES_HOST_AUTH_METHOD=trust"
+      - "POSTGRES_USER=${POSTGRES_USER}"
+      - "POSTGRES_PASSWORD=${POSTGRES_PASSWORD}"
+      - "POSTGRES_DB=${POSTGRES_DB}"
+      - "DATABASE_URL=${DATABASE_URL}"
+
+  web:
+    build: .
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    container_name: droid_service
+    volumes:
+      - .:/droid_service
+    ports:
+      - "8000:8000"
+    links:
+      - db
+    depends_on:
+      - db

@@ -7,5 +7,5 @@ __pycache__
 *.sqlite3
 
 # Environment files
-
+.env
 /venv
